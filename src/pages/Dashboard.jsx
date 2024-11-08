@@ -1,4 +1,3 @@
-// Dashboard.js
 import { useState, useEffect } from "react";
 import data from "../data/data.json";
 import Form from "../components/Form";
@@ -67,27 +66,31 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="container mx-auto mt-10">
+    <div className="container mx-auto mt-10 px-4 sm:px-6 lg:px-8">
       <button
         onClick={() => setFormVisible(!formVisible)}
-        className="w-full mb-4 px-4 py-2 btn btn-active btn-success text-white font-semibold rounded-lg focus:outline-none hover:bg-green-800"
+        className="w-full sm:w-auto mb-4 px-4 py-2 btn btn-active btn-success text-white font-semibold rounded-lg focus:outline-none hover:bg-green-800"
       >
         {formVisible ? "Cancel" : "Add Item"}
       </button>
 
       {formVisible && (
-        <Form
-          formData={formData}
-          handleInputChange={handleInputChange}
-          handleSubmit={editing ? updateItem : addItem}
-          editing={editing}
-        />
+        <div className="w-full sm:w-2/3 lg:w-1/2 mx-auto">
+          <Form
+            formData={formData}
+            handleInputChange={handleInputChange}
+            handleSubmit={editing ? updateItem : addItem}
+            editing={editing}
+          />
+        </div>
       )}
 
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <ItemList items={items} editItem={editItem} deleteItem={deleteItem} />
+        <div className="overflow-x-auto">
+          <ItemList items={items} editItem={editItem} deleteItem={deleteItem} />
+        </div>
       )}
     </div>
   );
