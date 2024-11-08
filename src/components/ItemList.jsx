@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 export default function ItemList({ items, editItem, deleteItem }) {
   return (
-    <table className="table table-sm">
+    <table className="table table-xs md:table-sm">
       <thead>
         <tr className="bg-gray-100">
           <th className="px-4 py-2 text-left border-b">Name</th>
